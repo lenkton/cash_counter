@@ -14,6 +14,7 @@ class InvoicesController < ApplicationController
 
   def create
     @invoice = Invoice.new(invoice_params)
+    @payment.user = current_user
 
     respond_to do |format|
       if @invoice.save

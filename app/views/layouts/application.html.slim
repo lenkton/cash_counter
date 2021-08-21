@@ -1,0 +1,26 @@
+doctype html
+html
+  head
+    title CashCounter
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    header
+      = link_to 'HOME', root_path
+      = link_to 'log out', destroy_user_session_path, method: :delete
+      = link_to 'Payments', payments_path
+      section
+        p
+          Your balance:
+          =< current_user.balance
+
+    p class="notice"
+      = notice
+    p class="alert"
+      = alert
+
+    = yield

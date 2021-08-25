@@ -14,9 +14,10 @@ html
       = link_to 'log out', destroy_user_session_path, method: :delete
       = link_to 'Payments', payments_path
       section
-        p
-          Your balance:
-          =< current_user.balance
+        - if user_signed_in?
+          p
+            Your balance:
+            =< current_user.balance
 
     p class="notice"
       = notice

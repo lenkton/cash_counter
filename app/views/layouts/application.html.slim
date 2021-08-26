@@ -9,19 +9,21 @@ html
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
 
   body
-    header
-      = link_to 'HOME', root_path
-      = link_to 'log out', destroy_user_session_path, method: :delete
-      = link_to 'Payments', payments_path
-      section
+    .grid
+      header
+        => link_to 'HOME', root_path
         - if user_signed_in?
-          p
-            Your balance:
-            =< current_user.balance
+          => link_to 'log out', destroy_user_session_path, method: :delete
+        = link_to 'Payments', payments_path
+        section
+          - if user_signed_in?
+            p
+              Your balance:
+              =< current_user.balance
 
-    p class="notice"
-      = notice
-    p class="alert"
-      = alert
+      p class="notice"
+        = notice
+      p class="alert"
+        = alert
 
-    = yield
+      = yield

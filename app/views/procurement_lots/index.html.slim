@@ -1,2 +1,14 @@
-h1 Procurements
+h1 Procurement
+
+table
+  thead
+    tr
+      th Title
+      th Description
+  tbody
+    - @procurement_lots.each do |lot| 
+      tr
+        td = link_to lot.title, lot  
+        td = lot.description 
+
 = link_to 'create a new lot', new_procurement_lot_path

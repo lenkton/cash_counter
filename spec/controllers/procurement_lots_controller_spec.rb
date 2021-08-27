@@ -22,7 +22,7 @@ RSpec.describe ProcurementLotsController, type: :controller do
   describe 'POST #create' do
     context 'with valid params' do
       let(:valid_params) { { procurement_lot: { title: 'title', description: 'alala' } } }
-      it 'responds with OK' do
+      it 'redirects to the craeted lot' do
         post :create, params: valid_params
         expect(response).to redirect_to ProcurementLot.last
       end
@@ -41,6 +41,17 @@ RSpec.describe ProcurementLotsController, type: :controller do
 
       it 'does not create a lot' do
         expect { post :create, params: invalid_params }.not_to change(ProcurementLot, :count)
+      end
+    end
+  end
+
+  describe 'GET #show' do
+    context 'valid params' do
+      let(:pl) { create :procurement_lot }
+
+      it 'responds with the show template' do
+        get :show, params: { id: pl.id }
+        expect(response).to render_template(:show)
       end
     end
   end

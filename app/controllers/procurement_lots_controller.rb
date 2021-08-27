@@ -1,5 +1,6 @@
 class ProcurementLotsController < ApplicationController
   def index
+    @procurement_lots = ProcurementLot.first(100)
   end
 
   def new
@@ -14,6 +15,10 @@ class ProcurementLotsController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @procurement_lot = ProcurementLot.find(params[:id])
   end
 
   private

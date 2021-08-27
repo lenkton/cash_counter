@@ -1,0 +1,22 @@
+= form_with(model: @procurement_lot, local: true) do |form|
+  - if @procurement_lot.errors.any?
+    #error_explanation
+      h2
+        => pluralize(@procurement_lot.errors.count, "error")
+        | prohibited this procurement lot from being saved:
+
+      ul
+        - @procurement_lot.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = form.label :title
+    = form.text_field :title
+  .field
+    = form.label :description
+    = form.text_area :description
+
+  .actions
+    = form.submit
+
+= link_to 'Back', procurement_lots_path

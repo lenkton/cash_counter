@@ -15,6 +15,7 @@ html
         - if user_signed_in?
           => link_to 'log out', destroy_user_session_path, method: :delete
         = link_to 'Payments', payments_path
+        =< link_to 'Procurement', procurement_lots_path
         section
           - if user_signed_in?
             p
